@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<specific>
+		<newHostName>LPT-IT-01</newHostName>
+		<newlocalUser>theotester</newlocalUser>
+		<newlocalUsersPW>76492d1116743f0423413b16050a5345MgB8AFgAMQBDADkAcwBHAFUAVgBwAFYAbAA2AEgATwBIAHEASABiAFIAOQB5AFEAPQA9AHwANwBhADcANAA0ADAAYgA1ADQAZQA4ADQAOAAwAGEANwAwAGMAYgBjADMAZQBiAGUAN
+gBjAGEANQBhADAAZQBjADgANwA0ADgAZgAyADgAMQBjADIAMgA0ADcAYQAwAGQAYgA0ADkANwAwAGUAOQBkADcANQAzAGEAMgA1ADEAZgA=</newlocalUsersPW>
+	</specific>
+	<common>
+		<newWorkgroup>WGCPR</newWorkgroup>
+		<genericadmin>adminit</genericadmin>
+		<genericadminsPW>76492d1116743f0423413b16050a5345MgB8AEEATgBIADUARQBZAGwAZgBkADYAOAByAEwAZgBwAFYAVgA1AHQAZwBoAGcAPQA9AHwAMwAyADQAMwA1ADQANAAzADgAOABmADQAZQAxAGIAMwBkAGMAOQAxAGMAYQAwAGEAN
+AA5AGUANwAxAGIAZAAyADMAZAA4AGEAMAAyADQANwAwADgAOAAzADcANgA0AGYAOQA1AGYAMgA3AGEAOAAxADQANQA0AGUAYgBmADAAMwA=</genericadminsPW>
+		<installsourcespath>Software</installsourcespath>
+		<bitlocker set="no">Config</bitlocker>
+		<softwareinstall set="yes">
+            <software keyname="office365" set="yes">InstallFClocal.cmd</software>
+            <software keyname="VeeamAgentWindows" set="yes">VeeamAgentWindows_2.0.0.700.exe /silent /accepteula</software>
+            <software keyname="VeeamConfigurator" set="no">Veeam.Agent.Configurator.exe -import /f:$ScriptDrive\$installsourcespath\VeeamAgent\veeam_config.xml</software>
+            <software keyname="TeamViewer" set="yes">TeamViewer_Host_SetupCPR.exe /S</software>
+            <software keyname="FoxitReader" set="no">FoxitReader95_Setup_Prom_IS.exe /ForceInstall /VERYSILENT DESKTOP_SHORTCUT=0 MAKEDEFAULT=0 VIEWINBROWSER=0 LAUNCHCHECKDEFAULT=0 AUTO_UPDATE=0 /passive /norestart</software>
+            <software keyname="Firefox" set="no">Firefox Setup 67.0-64.exe /S</software>
+           
+            
+        </softwareinstall>
+		<securityconfig set="yes">
+			<rememberlastpwd>net accounts /uniquepw:12</rememberlastpwd>
+			<minpwdlength>net accounts /minpwlen:8</minpwdlength>
+			<changepwsrule>net accounts /maxpwage:90</changepwsrule>
+			<lockoutthreshold>net accounts /lockoutthreshold:10</lockoutthreshold>
+			<lockoutwindow>net accounts /lockoutwindow:15</lockoutwindow>
+			<lockoutduration>net accounts /lockoutduration:15</lockoutduration>
+			<disablebulitinadminadguest set="yes"/>
+			<importbaselinesecurity set="yes"/> 
+		</securityconfig>
+		<generalpreferences set="yes">
+			<SemiAnnualChannel keyname="BranchReadinessLevel" value="32">HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</SemiAnnualChannel>
+			<WaitforRollout keyname="DeferFeatureUpdatesPeriodInDays" value="90">HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</WaitforRollout>
+			<DisableCortana keyname="AllowCortana" value="0">HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search</DisableCortana>
+			<DeactiveTelemetry keyname="AllowTelemetry" value="0">HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection</DeactiveTelemetry>
+			<DisableTelemetrieExperience keyname="Start" value="4">HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack</DisableTelemetrieExperience>
+		</generalpreferences>
+	</common>
+</Config>
